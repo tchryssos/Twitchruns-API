@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  speedrun_id: MyString
+  runner_id: 1
+  categoryleaderboard_id: 1
+  run_url: MyString
+
+two:
+  speedrun_id: MyString
+  runner_id: 1
+  categoryleaderboard_id: 1
+  run_url: MyString
