@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 20161003184741) do
   end
 
   create_table "category_leaderboards", force: :cascade do |t|
-    t.string   "placements"
+    t.string   "placements", default: "1,2,3,4,5,6,7,8,9,10"
     t.integer  "game_id"
     t.string   "title"
     t.string   "rules"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "games", force: :cascade do |t|
