@@ -4,6 +4,8 @@ module Api
 
 
       def index
+        runners=Runner.all
+        render json: runners
       end
 
       def show
