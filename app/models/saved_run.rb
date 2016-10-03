@@ -1,0 +1,2 @@
+class SavedRun < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class CategoryLeaderboard < ApplicationRecord
+end
