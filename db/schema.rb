@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20161003184741) do
   create_table "runs", force: :cascade do |t|
     t.string   "speedrun_id"
     t.integer  "runner_id"
-    t.integer  "categoryleaderboard_id"
+    t.integer  "category_leaderboard_id"
     t.string   "run_url"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "saved_runs", force: :cascade do |t|
