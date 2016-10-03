@@ -4643,3 +4643,1308 @@ Processing by Api::V1::RunnersController#index as HTML
 Completed 200 OK in 16ms (Views: 7.6ms | ActiveRecord: 3.3ms)
 
 
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+  [1m[36mRun Load (0.7ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 8]]
+  [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 8]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "app_users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "troy"], ["password_digest", "$2a$10$pNB8OHp.xLS63MmtaVT5DOgv4vibmDQjxT4nvp5bEmUdfdAWVooom"], ["created_at", 2016-10-03 20:33:35 UTC], ["updated_at", 2016-10-03 20:33:35 UTC]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8559278829749730180);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAppUsers (20161003184741)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE "app_users"[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003184741"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryLeaderboards (20161003184707)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "category_leaderboards"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003184707"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSavedRuns (20161003184208)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "saved_runs"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003184208"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRunners (20161003184155)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "runners"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003184155"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRuns (20161003184111)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "runs"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003184111"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGames (20161003183735)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "games"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161003183735"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8559278829749730180)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (114.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitchruns_api_development"[0m
+  [1m[35m (114.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitchruns_api_test"[0m
+  [1m[35m (228.7ms)[0m  [1m[35mCREATE DATABASE "twitchruns_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (241.0ms)[0m  [1m[35mCREATE DATABASE "twitchruns_api_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-10-03 20:35:18 UTC], ["updated_at", 2016-10-03 20:35:18 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-10-03 20:35:18 UTC], ["updated_at", 2016-10-03 20:35:18 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8559278829749730180);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateGames (20161003183735)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" serial primary key, "name" character varying, "artwork_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003183735"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRuns (20161003184111)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "runs" ("id" serial primary key, "speedrun_id" character varying, "runner_id" integer, "category_leaderboard_id" integer, "run_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184111"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRunners (20161003184155)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "runners" ("id" serial primary key, "username" character varying, "stream_url" character varying, "twitch_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184155"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSavedRuns (20161003184208)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "saved_runs" ("id" serial primary key, "user_id" integer, "run_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184208"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryLeaderboards (20161003184707)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "category_leaderboards" ("id" serial primary key, "placements" character varying DEFAULT '1,2,3,4,5,6,7,8,9,10', "game_id" integer, "title" character varying, "rules" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184707"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAppUsers (20161003184741)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8559278829749730180)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8559278829749730180);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20161003184741)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184741"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8559278829749730180)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'category_leaderboards'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'games'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'runners'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'runs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'saved_runs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (115.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitchruns_api_development"[0m
+  [1m[35m (113.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "twitchruns_api_test"[0m
+  [1m[35m (229.2ms)[0m  [1m[35mCREATE DATABASE "twitchruns_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (233.1ms)[0m  [1m[35mCREATE DATABASE "twitchruns_api_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "category_leaderboards" ("id" serial primary key, "placements" character varying DEFAULT '1,2,3,4,5,6,7,8,9,10', "game_id" integer, "title" character varying, "rules" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" serial primary key, "name" character varying, "artwork_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "runners" ("id" serial primary key, "username" character varying, "stream_url" character varying, "twitch_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "runs" ("id" serial primary key, "speedrun_id" character varying, "runner_id" integer, "category_leaderboard_id" integer, "run_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "saved_runs" ("id" serial primary key, "user_id" integer, "run_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20161003184741')[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20161003183735'), ('20161003184111'), ('20161003184155'), ('20161003184208'), ('20161003184707');
+
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-10-03 20:35:54 UTC], ["updated_at", 2016-10-03 20:35:54 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "category_leaderboards" ("id" serial primary key, "placements" character varying DEFAULT '1,2,3,4,5,6,7,8,9,10', "game_id" integer, "title" character varying, "rules" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" serial primary key, "name" character varying, "artwork_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "runners" ("id" serial primary key, "username" character varying, "stream_url" character varying, "twitch_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "runs" ("id" serial primary key, "speedrun_id" character varying, "runner_id" integer, "category_leaderboard_id" integer, "run_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "saved_runs" ("id" serial primary key, "user_id" integer, "run_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20161003184741')[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20161003183735'), ('20161003184111'), ('20161003184155'), ('20161003184208'), ('20161003184707');
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-10-03 20:35:54 UTC], ["updated_at", 2016-10-03 20:35:54 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Astral Trap"], ["artwork_url", "http://bruen.net/nicolette"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 1], ["title", "Any %"], ["rules", "Eos eos beatae minima provident qui doloribus illo."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 1], ["title", "100%"], ["rules", "Aut et dicta ipsa magni vero."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Elemental Transmogrification"], ["artwork_url", "http://dickinsonhills.com/marlin"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 2], ["title", "Any %"], ["rules", "Labore suscipit dolorum ipsa est aut."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 2], ["title", "100%"], ["rules", "Hic veniam perferendis ullam enim nihil rerum."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Super Speed"], ["artwork_url", "http://howellzulauf.name/freeda.deckow"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 3], ["title", "Any %"], ["rules", "Quo illo qui necessitatibus."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 3], ["title", "100%"], ["rules", "Consequatur quos unde animi qui itaque alias hic asperiores."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Melting"], ["artwork_url", "http://wilderman.org/berry.bruen"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 4], ["title", "Any %"], ["rules", "Cumque commodi porro dolorem qui."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 4], ["title", "100%"], ["rules", "Accusantium dolorum sit ut consequuntur voluptatem asperiores fugiat."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Animal Attributes"], ["artwork_url", "http://wilkinson.net/shirley"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 5], ["title", "Any %"], ["rules", "Rerum pariatur deserunt voluptates corporis in nostrum."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 5], ["title", "100%"], ["rules", "Voluptates nisi inventore at ipsam."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vision - X-Ray"], ["artwork_url", "http://kub.io/electa"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 6], ["title", "Any %"], ["rules", "Ipsum velit est quidem."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 6], ["title", "100%"], ["rules", "Ab sed qui quidem qui esse."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Weapon-based Powers"], ["artwork_url", "http://mcdermott.name/jackson"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 7], ["title", "Any %"], ["rules", "Rerum est nostrum molestias."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 7], ["title", "100%"], ["rules", "Iusto consequatur corrupti maiores."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Power Cosmic"], ["artwork_url", "http://marquardt.net/khalid"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 8], ["title", "Any %"], ["rules", "Qui enim et illum sit."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 8], ["title", "100%"], ["rules", "Ipsa dicta quia adipisci."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vaporising Beams"], ["artwork_url", "http://mosciski.co/ottis_quitzon"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 9], ["title", "Any %"], ["rules", "Et dolorem et inventore odit quam."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 9], ["title", "100%"], ["rules", "Enim ea deleniti dolorem qui aut quis rerum omnis."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Regeneration"], ["artwork_url", "http://durgankaulke.biz/adah_kutch"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 10], ["title", "Any %"], ["rules", "Quod sed iure dolorum assumenda laborum qui."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["game_id", 10], ["title", "100%"], ["rules", "Ipsa asperiores perspiciatis qui at dignissimos nulla hic molestiae."], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#ca4a14"], ["category_leaderboard_id", 10], ["run_url", "http://mayert.name/susie_crist"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Florida dragons"], ["stream_url", "http://mueller.org/alexandra_herman"], ["twitch_id", 63376], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 1], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#ef888a"], ["category_leaderboard_id", 1], ["run_url", "http://schadengrimes.net/misael"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Virginia bees"], ["stream_url", "http://rohanvon.name/alena.kiehn"], ["twitch_id", 63667], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 2], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#f62d47"], ["category_leaderboard_id", 1], ["run_url", "http://auer.name/king.hoeger"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "West Virginia tigers"], ["stream_url", "http://wintheiser.info/maria"], ["twitch_id", 29340], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 3], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#96d7dc"], ["category_leaderboard_id", 17], ["run_url", "http://connellystreich.org/ethelyn"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Vermont conspirators"], ["stream_url", "http://dooley.name/kennedy"], ["twitch_id", 99325], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 4], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#0e0dc5"], ["category_leaderboard_id", 14], ["run_url", "http://vonruedenondricka.info/derrick.wisoky"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "South Dakota gnomes"], ["stream_url", "http://brekke.org/marilyne_davis"], ["twitch_id", 53682], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 5], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#fec39d"], ["category_leaderboard_id", 7], ["run_url", "http://greenfelder.io/hal"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Nevada gnomes"], ["stream_url", "http://hayes.co/makenzie_ruecker"], ["twitch_id", 60154], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 6], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#68a253"], ["category_leaderboard_id", 1], ["run_url", "http://graham.info/johan.jast"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Maine cattle"], ["stream_url", "http://franecki.io/wanda.metz"], ["twitch_id", 13559], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 7], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#12b320"], ["category_leaderboard_id", 7], ["run_url", "http://pfefferbergnaum.info/meredith.king"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Connecticut elves"], ["stream_url", "http://heelnolan.name/genesis.brekke"], ["twitch_id", 38552], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 8], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#e515da"], ["category_leaderboard_id", 3], ["run_url", "http://rathbeahan.io/payton_bergstrom"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Alabama people"], ["stream_url", "http://blick.io/brendon.kihn"], ["twitch_id", 29423], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 9], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 9]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["speedrun_id", "#c1f53c"], ["category_leaderboard_id", 2], ["run_url", "http://strosin.info/carolina.monahan"], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "twitch_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "South Carolina bats"], ["stream_url", "http://gerlach.co/marianna"], ["twitch_id", 81624], ["created_at", 2016-10-03 20:35:55 UTC], ["updated_at", 2016-10-03 20:35:55 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "runs" SET "runner_id" = $1, "updated_at" = $2 WHERE "runs"."id" = $3[0m  [["runner_id", 10], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#0e0dc5,#68a253,#c1f53c,#fec39d,#0e0dc5,#ef888a,#c1f53c,#0e0dc5,#f62d47,#ef888a"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#fec39d,#96d7dc,#96d7dc,#c1f53c,#c1f53c,#96d7dc,#12b320,#0e0dc5,#12b320"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#fec39d,#96d7dc,#68a253,#f62d47,#0e0dc5,#c1f53c,#ef888a,#e515da,#96d7dc,#12b320"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#fec39d,#ca4a14,#c1f53c,#fec39d,#ef888a,#ca4a14,#0e0dc5,#e515da,#ca4a14,#ef888a"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#12b320,#96d7dc,#fec39d,#0e0dc5,#f62d47,#0e0dc5,#ef888a,#68a253,#fec39d"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#0e0dc5,#ef888a,#c1f53c,#12b320,#e515da,#12b320,#96d7dc,#96d7dc,#96d7dc"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#12b320,#f62d47,#12b320,#fec39d,#ca4a14,#96d7dc,#96d7dc,#e515da,#96d7dc,#ca4a14"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#68a253,#e515da,#0e0dc5,#fec39d,#fec39d,#e515da,#fec39d,#68a253,#68a253,#c1f53c"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#c1f53c,#0e0dc5,#12b320,#0e0dc5,#12b320,#96d7dc,#68a253,#ca4a14,#96d7dc"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#12b320,#96d7dc,#fec39d,#e515da,#68a253,#fec39d,#ca4a14,#ef888a,#12b320,#c1f53c"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#12b320,#fec39d,#68a253,#fec39d,#ef888a,#68a253,#ca4a14,#f62d47,#e515da,#ca4a14"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#f62d47,#fec39d,#12b320,#f62d47,#68a253,#ef888a,#c1f53c,#c1f53c,#68a253,#c1f53c"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#ef888a,#68a253,#96d7dc,#c1f53c,#12b320,#ca4a14,#ca4a14,#e515da,#0e0dc5,#12b320"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#12b320,#fec39d,#68a253,#e515da,#68a253,#12b320,#96d7dc,#ef888a,#12b320"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#0e0dc5,#12b320,#68a253,#f62d47,#68a253,#ca4a14,#fec39d,#ef888a,#ca4a14,#f62d47"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#96d7dc,#96d7dc,#0e0dc5,#68a253,#f62d47,#ef888a,#68a253,#ca4a14,#e515da,#f62d47"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#fec39d,#e515da,#0e0dc5,#ef888a,#ef888a,#c1f53c,#68a253,#96d7dc,#fec39d,#ef888a"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#f62d47,#0e0dc5,#68a253,#fec39d,#96d7dc,#fec39d,#68a253,#96d7dc,#12b320,#0e0dc5"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#c1f53c,#68a253,#ca4a14,#fec39d,#68a253,#12b320,#f62d47,#c1f53c,#96d7dc,#f62d47"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "category_leaderboards" SET "placements" = $1, "updated_at" = $2 WHERE "category_leaderboards"."id" = $3[0m  [["placements", "#68a253,#fec39d,#fec39d,#68a253,#96d7dc,#12b320,#0e0dc5,#f62d47,#e515da,#c1f53c"], ["updated_at", 2016-10-03 20:35:55 UTC], ["id", 20]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Troy"], ["password_digest", "$2a$10$a8GMnBmin1pQOKR.jfreXupFPyQFr5mzTycCRT1r8kF4KNN2ew7pG"], ["created_at", 2016-10-03 20:36:23 UTC], ["updated_at", 2016-10-03 20:36:23 UTC]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT  "runs".* FROM "runs" WHERE "runs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "saved_runs" ("user_id", "run_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["run_id", 1], ["created_at", 2016-10-03 20:36:47 UTC], ["updated_at", 2016-10-03 20:36:47 UTC]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSavedRun Load (0.3ms)[0m  [1m[34mSELECT "saved_runs".* FROM "saved_runs" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGame Load (1.1ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" INNER JOIN "runs" ON "category_leaderboards"."id" = "runs"."category_leaderboard_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+Started GET "/api/v1/users" for ::1 at 2016-10-03 16:40:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/users"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/v1/users" for ::1 at 2016-10-03 16:40:55 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::UsersController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/v1/users" for ::1 at 2016-10-03 16:41:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::UsersController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/v1/users" for ::1 at 2016-10-03 16:41:04 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::UsersController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:41:47 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 23ms (Views: 0.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:44:35 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:45:06 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:46:20 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.6ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" INNER JOIN "runs" ON "category_leaderboards"."id" = "runs"."category_leaderboard_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (84.83ms)
+Completed 200 OK in 115ms (Views: 81.6ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2016-10-03 16:54:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::UsersController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:54:18 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.6ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" INNER JOIN "runs" ON "category_leaderboards"."id" = "runs"."category_leaderboard_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (69.84ms)
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 15.1ms)
+
+
+  
+NoMethodError (undefined method `art_url' for #<Game:0x007ff6870e3640>
+Did you mean?  artwork_url):
+  
+app/controllers/api/v1/users_controller.rb:13:in `show'
+Started GET "/api/v1/users/1" for ::1 at 2016-10-03 16:55:06 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.5ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mGame Load (1.3ms)[0m  [1m[34mSELECT "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" INNER JOIN "runs" ON "category_leaderboards"."id" = "runs"."category_leaderboard_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "saved_runs" ON "runs"."id" = "saved_runs"."run_id" WHERE "saved_runs"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (85.8ms)
+Completed 200 OK in 118ms (Views: 81.3ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/api/v1/games" for ::1 at 2016-10-03 16:55:16 -0400
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 2]]
+[active_model_serializers]   [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 2]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 3]]
+[active_model_serializers]   [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 3]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 4]]
+[active_model_serializers]   [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 4]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 5]]
+[active_model_serializers]   [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 5]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 5]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 6]]
+[active_model_serializers]   [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 6]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 6]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 7]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 7]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 7]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 8]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 8]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 8]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 9]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 9]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 9]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 10]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 10]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" INNER JOIN "category_leaderboards" ON "runs"."category_leaderboard_id" = "category_leaderboards"."id" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (100.43ms)
+Completed 200 OK in 103ms (Views: 92.7ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/api/v1/category_leaderboards" for ::1 at 2016-10-03 16:56:35 -0400
+Processing by Api::V1::CategoryLeaderboardsController#index as HTML
+  [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 2]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 3]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 4]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 4]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 5]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 5]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 6]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 6]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 7]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 7]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 8]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 8]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 9]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 9]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 10]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 10]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 11]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 11]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 12]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 12]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 13]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 13]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 14]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 15]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 15]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 16]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 16]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 17]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 17]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 18]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 18]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 19]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 19]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 20]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 20]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (95.3ms)
+Completed 200 OK in 98ms (Views: 88.7ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/api/v1/runs" for ::1 at 2016-10-03 16:57:08 -0400
+Processing by Api::V1::RunsController#index as HTML
+  [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.52ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `game' for #<Run:0x007fae4b0f7250>):
+  
+app/controllers/api/v1/runs_controller.rb:7:in `index'
+Started GET "/api/v1/runs" for ::1 at 2016-10-03 16:58:05 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunsController#index as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (Unknown key: :through. Valid keys are: :class_name, :anonymous_class, :foreign_key, :validate, :autosave, :foreign_type, :dependent, :primary_key, :inverse_of, :required, :polymorphic, :touch, :counter_cache, :optional):
+  
+app/models/run.rb:4:in `<class:Run>'
+app/models/run.rb:1:in `<top (required)>'
+app/controllers/api/v1/runs_controller.rb:6:in `index'
+Started GET "/api/v1/runs" for ::1 at 2016-10-03 16:58:24 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunsController#index as HTML
+  [1m[36mRun Load (0.6ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.2ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.1ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" INNER JOIN "category_leaderboards" ON "games"."id" = "category_leaderboards"."game_id" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (100.82ms)
+Completed 200 OK in 130ms (Views: 99.3ms | ActiveRecord: 20.5ms)
+
+
+  [1m[36mCategoryLeaderboard Load (0.6ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+  [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" ORDER BY "category_leaderboards"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/v1/category_leaderboards" for ::1 at 2016-10-03 17:07:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::CategoryLeaderboardsController#index as HTML
+  [1m[36mCategoryLeaderboard Load (0.7ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 2]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 3]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 4]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 4]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 5]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 5]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 6]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 6]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 7]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 7]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 8]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 8]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 9]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 9]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 10]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 10]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 11]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 11]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 12]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 12]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 13]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 13]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 14]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 14]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 15]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 15]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 16]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 16]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 17]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 17]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 18]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 18]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 19]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 19]]
+[active_model_serializers]   [1m[36mRun Load (0.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 20]]
+[active_model_serializers]   [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.1ms)[0m  [1m[34mSELECT "runners".* FROM "runners" INNER JOIN "runs" ON "runners"."id" = "runs"."runner_id" WHERE "runs"."category_leaderboard_id" = $1[0m  [["category_leaderboard_id", 20]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (174.39ms)
+Completed 200 OK in 202ms (Views: 169.8ms | ActiveRecord: 24.8ms)
+
+
