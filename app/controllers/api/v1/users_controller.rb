@@ -1,7 +1,7 @@
 
 module Api
   module V1
-    class AppUsersController < ApplicationController
+    class UsersController < ApplicationController
       def new
       end
 
@@ -9,6 +9,8 @@ module Api
       end
 
       def show
+        user=User.find(params[:id])
+        render json: user
       end
     end
   end

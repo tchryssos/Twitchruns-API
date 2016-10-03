@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 20161003184741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "app_users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "category_leaderboards", force: :cascade do |t|
     t.string   "placements", default: "1,2,3,4,5,6,7,8,9,10"
     t.integer  "game_id"
@@ -60,6 +53,13 @@ ActiveRecord::Schema.define(version: 20161003184741) do
     t.integer  "run_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
