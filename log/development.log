@@ -6636,3 +6636,648 @@ Processing by Api::V1::RunsController#index as HTML
 Completed 200 OK in 100ms (Views: 74.1ms | ActiveRecord: 18.1ms)
 
 
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:08:00 -0400
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "twitchruns_api_development" does not exist
+):
+  
+activerecord (5.0.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:675:in `rescue in connect'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `connect'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `new'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:721:in `new_connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:765:in `checkout_new_connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:744:in `try_to_checkout_new_connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:705:in `acquire_connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:501:in `checkout'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:364:in `connection'
+activerecord (5.0.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:875:in `retrieve_connection'
+activerecord (5.0.0.1) lib/active_record/connection_handling.rb:128:in `retrieve_connection'
+activerecord (5.0.0.1) lib/active_record/connection_handling.rb:91:in `connection'
+activerecord (5.0.0.1) lib/active_record/migration.rb:558:in `connection'
+activerecord (5.0.0.1) lib/active_record/migration.rb:545:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8559278829749730180);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateGames (20161003183735)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" serial primary key, "name" character varying, "artwork_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003183735"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRuns (20161003184111)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "runs" ("id" serial primary key, "speedrun_id" character varying, "runner_id" integer, "category_leaderboard_id" integer, "run_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184111"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRunners (20161003184155)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "runners" ("id" serial primary key, "username" character varying, "stream_url" character varying, "twitch_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184155"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSavedRuns (20161003184208)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "saved_runs" ("id" serial primary key, "user_id" integer, "run_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184208"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategoryLeaderboards (20161003184707)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "category_leaderboards" ("id" serial primary key, "placements" character varying DEFAULT '1,2,3,4,5,6,7,8,9,10', "game_id" integer, "title" character varying, "rules" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184707"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20161003184741)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161003184741"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-10-04 15:08:41 UTC], ["updated_at", 2016-10-04 15:08:41 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8559278829749730180)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'category_leaderboards'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'games'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'runners'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'runs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'saved_runs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Super Mario 64"], ["artwork_url", "http://www.mobygames.com/images/covers/l/216304-super-mario-64-nintendo-64-front-cover.jpg"], ["created_at", 2016-10-04 15:08:46 UTC], ["updated_at", 2016-10-04 15:08:46 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("name", "artwork_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "The Legend of Zelda: Ocarina of Time"], ["artwork_url", "http://cdn.playbuzz.com/cdn/a9a90ae4-de77-4549-a76a-9280d3cd9868/a3a6d061-0541-4112-9817-23dd83836fb7.png"], ["created_at", 2016-10-04 15:08:46 UTC], ["updated_at", 2016-10-04 15:08:46 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "cheese05"], ["stream_url", "https://www.twitch.tv/cheese05"], ["created_at", 2016-10-04 15:08:46 UTC], ["updated_at", 2016-10-04 15:08:46 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "puncayshun"], ["stream_url", "https://www.twitch.tv/puncayshun"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "skater82297"], ["stream_url", "https://www.twitch.tv/skater82297"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "runners" ("username", "stream_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "torjeagc"], ["stream_url", "https://www.twitch.tv/torjeagc"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("placements", "game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["placements", "8m73rgwy,1zqjp35m,3,4,5,6,7,8,9,10"], ["game_id", 1], ["title", "120 Star"], ["rules", "Complete the game while collecting every star. No restrictions. All forms of BLJ are allowed.\n\nTiming starts from reset and ends when the big star is collected at the end of the game."], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "category_leaderboards" ("placements", "game_id", "title", "rules", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["placements", "8m7ow6wy,9yo05q1y,3,4,5,6,7,8,9,10"], ["game_id", 2], ["title", "Any %"], ["rules", "Any% Rules:\n-Reach the 'The End' screen, no additional restrictions.\n-Timing ends at the start of the Ganon death cutscene, or upon the credits scene loading (if done via wrongwarp).\n\nOcarina of Time Rules\n-Timing starts when selecting 'Yes' on the file select screen\n-1.0/1.1 Virtual Console or GameCube injects are banned\n\nEmulator-specific rules:\n-You must use Project64 1.6 or 1.7. All other emulators and versions (such as Mupen64 and Project64 2.0+) are banned.\n-You must use the default settings for emulation.\n-Tricks and glitches exclusive to 1.0/1.1 cannot be used on emulator to save time."], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "runner_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["speedrun_id", "8m73rgwy"], ["runner_id", 1], ["category_leaderboard_id", 1], ["run_url", "https://www.youtube.com/watch?v=EfS81QvdbF8"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "runner_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["speedrun_id", "1zqjp35m"], ["runner_id", 2], ["category_leaderboard_id", 1], ["run_url", "https://www.youtube.com/watch?v=f_lXYIUf3KE"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "runner_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["speedrun_id", "8m7ow6wy"], ["runner_id", 3], ["category_leaderboard_id", 2], ["run_url", "https://www.youtube.com/watch?v=9BGE9H7iPx8"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT  "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "runs" ("speedrun_id", "runner_id", "category_leaderboard_id", "run_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["speedrun_id", "9yo05q1y"], ["runner_id", 4], ["category_leaderboard_id", 2], ["run_url", "https://www.youtube.com/watch?v=HGa-mhS4YDY"], ["created_at", 2016-10-04 15:08:47 UTC], ["updated_at", 2016-10-04 15:08:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:08:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunnersController#index as HTML
+  [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.5ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.6ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (91.64ms)
+Completed 200 OK in 122ms (Views: 92.7ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:24:36 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.5ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.94ms)
+Completed 200 OK in 34ms (Views: 30.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:24:37 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.6ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.99ms)
+Completed 200 OK in 37ms (Views: 32.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:25:09 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.82ms)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:25:10 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (27.22ms)
+Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:26:15 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.9ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.17ms)
+Completed 200 OK in 44ms (Views: 40.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:26:25 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.4ms)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:30:56 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.7ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.6ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (93.13ms)
+Completed 200 OK in 124ms (Views: 92.8ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:31:06 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.8ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.5ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (1.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.22ms)
+Completed 200 OK in 29ms (Views: 24.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:31:35 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (29.92ms)
+Completed 200 OK in 33ms (Views: 29.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:32:38 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.09ms)
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:37:12 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (21.42ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:37:13 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (2.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (46.32ms)
+Completed 200 OK in 49ms (Views: 43.8ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:42:29 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.46ms)
+Completed 200 OK in 29ms (Views: 26.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:42:33 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.75ms)
+Completed 200 OK in 29ms (Views: 25.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:43:43 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (2.1ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.7ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (1.7ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.25ms)
+Completed 200 OK in 33ms (Views: 26.1ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:52:32 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.3ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.63ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 11:52:37 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.89ms)
+Completed 200 OK in 30ms (Views: 26.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 17:46:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.7ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (1.0ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (1.1ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.5ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (173.77ms)
+Completed 200 OK in 215ms (Views: 173.3ms | ActiveRecord: 28.5ms)
+
+
+Started GET "/api/v1/runs" for ::1 at 2016-10-04 17:46:15 -0400
+Processing by Api::V1::RunsController#index as HTML
+  [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.6ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.5ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.3ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.6ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.6ms)
+Completed 200 OK in 29ms (Views: 23.8ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/v1/runs" for ::1 at 2016-10-04 17:48:00 -0400
+Processing by Api::V1::RunsController#index as HTML
+  [1m[36mRun Load (0.4ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+[active_model_serializers]   [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRunner Load (0.2ms)[0m  [1m[34mSELECT  "runners".* FROM "runners" WHERE "runners"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.53ms)
+Completed 200 OK in 23ms (Views: 19.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/games" for ::1 at 2016-10-04 17:51:54 -0400
+Processing by Api::V1::GamesController#index as HTML
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games"[0m
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 1]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards" WHERE "category_leaderboards"."game_id" = $1[0m  [["game_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.76ms)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/runners" for ::1 at 2016-10-04 17:53:42 -0400
+Processing by Api::V1::RunnersController#index as */*
+  [1m[36mRunner Load (0.4ms)[0m  [1m[34mSELECT "runners".* FROM "runners"[0m
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 1]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 2]]
+[active_model_serializers]   [1m[36mRun Load (0.2ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 3]]
+[active_model_serializers]   [1m[36mRun Load (0.3ms)[0m  [1m[34mSELECT "runs".* FROM "runs" WHERE "runs"."runner_id" = $1[0m  [["runner_id", 4]]
+[active_model_serializers]   [1m[36mCategoryLeaderboard Load (0.4ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "category_leaderboards".* FROM "category_leaderboards"[0m
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.0ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 2.4ms)
+
+
