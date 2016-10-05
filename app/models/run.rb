@@ -5,7 +5,7 @@ class Run < ApplicationRecord
   has_many :saved_runs
 
   def run_placement
-    placed_runs_hash=[]
+    placed_runs_hash=nil
     CategoryLeaderboard.all.each_with_index do |leaderboard, i|
       placements=leaderboard.placements.split(",")
       if placements.find{|placed_run| placed_run===self.speedrun_id}
