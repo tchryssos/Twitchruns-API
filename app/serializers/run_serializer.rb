@@ -1,3 +1,6 @@
 class RunSerializer<ActiveModel::Serializer
-  attributes :speedrun_id, :id, :run_url, :run_placement, :runner_id
+  attributes :speedrun_id, :id, :run_url, :run_placement, :runner_id, :place
+  has_one :runner
+  has_one :game
+  has_one :category_leaderboard
 end

@@ -5,17 +5,21 @@ class Run < ApplicationRecord
   has_many :saved_runs
 
   def run_placement
-    placed_runs_hash={}
-    CategoryLeaderboard.all.each do |leaderboard|
+    placed_runs_hash=[]
+    CategoryLeaderboard.all.each_with_index do |leaderboard, i|
       placements=leaderboard.placements.split(",")
       if placements.find{|placed_run| placed_run===self.speedrun_id}
         game_name=leaderboard.game.name
         category=leaderboard.title
         placing=placements.index(self.speedrun_id)+1
-        placed_runs_hash[game_name]={category=>placing}
+        placed_runs_hash={'name': game_name,'category': category,'place': placing}
       end
     end
   return placed_runs_hash
+  end
+
+  def place
+    self.run_placement[:place]
   end
 
   def runner_id
