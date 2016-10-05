@@ -12,10 +12,14 @@ class Run < ApplicationRecord
         game_name=leaderboard.game.name
         category=leaderboard.title
         placing=placements.index(self.speedrun_id)+1
-        placed_runs_hash[i]={'name': game_name,'category': category,'place': placing}
+        placed_runs_hash={'name': game_name,'category': category,'place': placing}
       end
     end
   return placed_runs_hash
+  end
+
+  def place
+    self.run_placement[:place]
   end
 
   def runner_id
