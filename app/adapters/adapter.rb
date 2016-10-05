@@ -67,7 +67,8 @@ class Adapter
 
     def fetch_runners(range_beginning, range_end)
       #RUN THIS AFTER FETCHING THE RUNS, BUT BEFORE CREATING THEM, SINCE YOU NEED RUNNERS TO HAVE RUNS. SIMILARLY, DON'T RUN THIS WITH MORE THAN 30 AT A TIME OR YOU'LL GO OVER THE RATE LIMIT.
-      @api_leaderboards[range_beginning..range_end].each do |leaderboard|
+      @api_leaderboards[range_beginning..range_end].compact.each do |leaderboard|
+        # binding.pry
         unless leaderboard["runs"].nil?
           leaderboard["runs"].each do |run|
             @api_runners<<HTTParty.get("#{@speedrun_base}/users/#{run["run"]["players"][0]["id"]}")["data"]
@@ -78,40 +79,60 @@ class Adapter
 
     def create_runners
       #RUN THIS AFTER FETCHING ALL THE RUNNERS
-      @api_runners.each do |runner|
-        if runner["twitch"]["uri"]
+      @api_runners.compact.each do |runner|
+        if runner["twitch"]
           Runner.create(username: runner["names"]["international"], stream_url: runner["twitch"]["uri"], speedrun_id:runner["id"])
         else
           Runner.create(username: runner["names"]["international"], speedrun_id:runner["id"])
         end
+        Runner.create(username: "Unregistered Runner", speedrun_id:"harambe")
       end
     end
 
     def create_runs
       #RUN THIS AFTER CREATING ALL THE RUNNERS
-      @api_leaderboards.each do |leaderboard|
+      @api_leaderboards.compact.each do |leaderboard|
         n=0
 
-        unless leaderboard["run"].nil?
-          runner=Runner.all.find_by(speedrun_id: run["run"]["players"][0]["id"])
-
-          run_leaderboard=CategoryLeaderboard.all.find_by(speedrun_id:run["run"]["category"])
-
           leaderboard["runs"].each do |run|
-            run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id)
+            if run["run"]["players"][0]["rel"]=="guest"
+              runner=Runner.all.find_by(speedrun_id: "harambe")
+            else
+              runner=Runner.all.find_by(speedrun_id: run["run"]["players"][0]["id"])
+            end
+
+            run_leaderboard=CategoryLeaderboard.all.find_by(speedrun_id:run["run"]["category"])
+
+            new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id)
 
             split_place=run_leaderboard.placements.split(",")
 
-            split_place[n]=run.speedrun_id
+            split_place[n]=new_run.speedrun_id
 
             run_leaderboard.placements=split_place.join(",")
 
+            run_leaderboard.save
+
             n+=1
-          end
         end
       end
     end
 
+
+    def api_call_runner
+      fetch_games
+      create_games_and_categories
+      sleep(61)
+      fetch_runs(0,29)
+      sleep(61)
+      fetch_runs(30,-1)
+      sleep(61)
+      fetch_runners(0,29)
+      sleep(61)
+      fetch_runners(30,-1)
+      create_runners
+      create_runs
+    end
   end
 ## END OF SPEEDRUN WRAPPER
 end
