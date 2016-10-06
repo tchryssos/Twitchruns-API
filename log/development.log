@@ -1174,3 +1174,35 @@ Processing by Api::V1::StreamsController#show as */*
 Completed 200 OK in 1253ms (Views: 18.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2016-10-06 14:07:35 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (28.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/eceozalp/.rvm/gems/ruby-2.2.3/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/eceozalp/.rvm/gems/ruby-2.2.3/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb (7.4ms)
+Completed 200 OK in 22ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/runs/?limit=10" for ::1 at 2016-10-06 14:10:43 -0400
+Processing by Api::V1::RunsController#index as */*
+  Parameters: {"limit"=>"10"}
+  [1m[36mRun Load (33.2ms)[0m  [1m[34mSELECT  "runs".* FROM "runs" LIMIT $1[0m  [["LIMIT", 10]]
+  [1m[36mRun Load (3.9ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+Started GET "/api/v1/runs/?limit=10" for ::1 at 2016-10-06 14:13:59 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunsController#index as */*
+  Parameters: {"limit"=>"10"}
+Started GET "/api/v1/runs/?limit=10" for ::1 at 2016-10-06 14:14:19 -0400
+Completed   in 975073ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/runs?limit=10" for ::1 at 2016-10-06 14:30:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::RunsController#index as */*
+  Parameters: {"limit"=>"10"}
+  [1m[36mRun Load (11.9ms)[0m  [1m[34mSELECT "runs".* FROM "runs"[0m
+  [1m[36mRun Load (0.5ms)[0m  [1m[34mSELECT  "runs".* FROM "runs" LIMIT $1[0m  [["LIMIT", 10]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.18ms)
+Completed 200 OK in 27271ms (Views: 59.0ms | ActiveRecord: 49.3ms)
+
+

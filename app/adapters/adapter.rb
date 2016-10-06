@@ -1,7 +1,7 @@
 class Adapter
   class TwitchWrapper
 
-    attr_accessor :response,
+    attr_accessor :response, :twitch_base, :twitch_client_id
 
     def initialize
       @response=nil
@@ -11,6 +11,12 @@ class Adapter
 
     def get_user(username)
       @response=HTTParty.get("#{@twitch_base}/users/#{username}/#{@twitch_client_id}")
+    end
+
+    def get_streams(slugified_game_name)
+       response = HTTParty.get("#{@twitch_base}/search/streams#{@twitch_client_id}&q=#{slugified_game_name}")
+
+       return response
     end
 
   end
