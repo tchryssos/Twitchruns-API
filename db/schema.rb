@@ -16,17 +16,19 @@ ActiveRecord::Schema.define(version: 20161003184741) do
   enable_extension "plpgsql"
 
   create_table "category_leaderboards", force: :cascade do |t|
-    t.string   "placements", default: "1,2,3,4,5,6,7,8,9,10"
+    t.string   "placements",  default: "1,2,3"
     t.integer  "game_id"
     t.string   "title"
     t.string   "rules"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.string   "speedrun_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
     t.string   "artwork_url"
+    t.string   "speedrun_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -35,8 +37,9 @@ ActiveRecord::Schema.define(version: 20161003184741) do
     t.string   "username"
     t.string   "stream_url"
     t.integer  "twitch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "speedrun_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "runs", force: :cascade do |t|

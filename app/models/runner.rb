@@ -4,7 +4,7 @@ class Runner < ApplicationRecord
   has_many :games, through: :category_leaderboards
 
   def placed_runs
-    placed_runs_hash={}
+    placed_runs_array=[]
     runs=self.runs
     runs.each do |run|
       CategoryLeaderboard.all.each do |leaderboard|
@@ -13,11 +13,12 @@ class Runner < ApplicationRecord
           game_name=leaderboard.game.name
           category=leaderboard.title
           placing=placements.index(run.speedrun_id)+1
-          placed_runs_hash[game_name]={category=>{placing=>run.speedrun_id}}
+          placing_run={game: game_name, category: category, placing: placing, speedrun_id:run.speedrun_id}
+          placed_runs_array<<placing_run
         end
       end
     end
-    return placed_runs_hash
+    return placed_runs_array
   end
 
 end

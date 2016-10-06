@@ -4,7 +4,7 @@ class CreateRunners < ActiveRecord::Migration[5.0]
       t.string :username
       t.string :stream_url
       t.integer :twitch_id
-
+      t.string :speedrun_id
       t.timestamps
     end
   end
