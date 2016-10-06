@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :runs, only: [:index, :show]
       resources :runners, only: [:index, :show]
       resources :sessions, except: [:show, :index]
+      post 'streams', to: "streams#find"
     end
   end
 
