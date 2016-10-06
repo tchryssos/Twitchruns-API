@@ -3,7 +3,11 @@ module Api
     class RunsController < ApplicationController
 
       def index
-        runs=Run.all
+        if params[:limit]
+          runs = Run.all.limit(10)
+        else
+          runs = Run.all
+        end
         render json: runs
       end
 
