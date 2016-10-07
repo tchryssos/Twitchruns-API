@@ -2,7 +2,6 @@ module Api
   module V1
     class StreamsController < ApplicationController
       def find
-        binding.pry
         game=Run.find(params["run"]["id"]).game
 
         slugified_game_name=game.name.tr(" ","_").tr("/","_").downcase
