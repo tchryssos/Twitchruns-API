@@ -4,9 +4,9 @@ module Api
 
       def index
         if params[:limit]
-          runs = Run.all.limit(10).includes(:runs)
+          runs = Run.all.limit(10)
         else
-          runs = Run.all.includes(:runs)
+          runs = Run.all
         end
         render json: runs
       end
