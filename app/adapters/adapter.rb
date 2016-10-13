@@ -19,6 +19,12 @@ class Adapter
        return response
     end
 
+    def get_thumbnail(run_id)
+      response=HTTParty.get("#{@twitch_base}/videos/#{run_id}#{@twitch_client_id}")
+
+      return response["preview"]
+    end
+
   end
   # END OF TWITCH WRAPPER
 
@@ -26,7 +32,7 @@ class Adapter
 
     #I NEED TO BUILD A RUNNER METHOD FOR THIS CUZ IT'S A MESS.
 
-    attr_accessor :api_games, :api_categories, :api_leaderboards, :api_runners
+    attr_accessor :api_games, :api_categories, :api_leaderboards, :api_runners, :page_one_games
 
     def initialize
       @response=nil
@@ -35,12 +41,11 @@ class Adapter
       @api_leaderboards=[]
       @api_runners=[]
       @speedrun_base="http://www.speedrun.com/api/v1"
+      @page_one_games=%w(sm64 oot sms alttp Portal sa2b smb smw mk8 pkmnredblue undertale mm lm Destiny pd2 me smb1 yi bk smgalaxy)
     end
 
-    def fetch_games
+    def fetch_games(selected_games)
       #The selected games have to be hard coded because the speedrun API doesn't allow for sorting by popularity. Right now we're taking the top 20 most popular games.
-
-      selected_games=%w(sm64 oot sms alttp Portal sa2b smb smw mk8 pkmnredblue undertale mm lm Destiny pd2 me smb1 yi bk smgalaxy)
 
       selected_games.each do |game_abv|
         @api_games<<HTTParty.get("#{@speedrun_base}/games/#{game_abv}")["data"]
@@ -109,7 +114,35 @@ class Adapter
 
             run_leaderboard=CategoryLeaderboard.all.find_by(speedrun_id:run["run"]["category"])
 
-            new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id)
+            if run["run"]["videos"]["links"][0]["uri"].include?("twitch")
+
+              url=run["run"]["videos"]["links"][0]["uri"]
+
+              twitch=Adapter::TwitchWrapper.new
+              vid_id=url.split("/")[-2]+url.split("/")[-1]
+              thumbnail=twitch.get_thumbnail(vid_id)
+
+              new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id, thumbnail:thumbnail)
+
+            elsif run["run"]["videos"]["links"][0]["uri"].include?("youtube")
+
+              url=run["run"]["videos"]["links"][0]["uri"]
+
+              thumbnail='http://img.youtube.com/vi/' + url.split('=')[1] + "/hqdefault.jpg"
+
+              new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id, thumbnail: thumbnail)
+
+            elsif run["run"]["videos"]["links"][0]["uri"].include?("youtu.")
+
+              url=run["run"]["videos"]["links"][0]["uri"]
+              thumbnail='http://img.youtube.com/vi/' + url.split('/')[-1] + "/hqdefault.jpg"
+
+
+              new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id, thumbnail: thumbnail)
+
+            else
+              new_run=Run.create(speedrun_id: run["run"]["id"], run_url:run["run"]["videos"]["links"][0]["uri"], runner_id:runner.id, category_leaderboard_id:run_leaderboard.id, thumbnail: "none")
+            end
 
             split_place=run_leaderboard.placements.split(",")
 
@@ -125,8 +158,8 @@ class Adapter
     end
 
 
-    def api_call_runner
-      fetch_games
+    def api_call_runner(selected_games)
+      fetch_games(selected_games)
       create_games_and_categories
       sleep(61)
       fetch_runs(0,29)
